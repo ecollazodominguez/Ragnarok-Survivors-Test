@@ -126,7 +126,6 @@ offset = Vector2(14, -10)
 [node name="Hurtbox" parent="." instance=ExtResource("13_hntww")]
 collision_layer = 4
 collision_mask = 4
-HurtBoxType = 1
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 visible = false

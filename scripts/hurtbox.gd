@@ -4,6 +4,7 @@ extends Area2D
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var disable_timer = $DisableTimer
+@export var cooldown_time = 0.5
 
 signal hurt(damage, angle, knockback_amount)
 
@@ -16,6 +17,7 @@ func _on_area_entered(area):
 			match HurtBoxType:
 				0: #Cooldown
 					collision_shape_2d.set_deferred("disabled",true)
+					disable_timer.wait_time = cooldown_time
 					disable_timer.start()
 				1: #HitOnce
 					if hit_once_array.has(area) == false:

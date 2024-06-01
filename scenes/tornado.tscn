@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://ba0yj56oqc1v"]
+
+[ext_resource type="Script" path="res://scripts/tornado.gd" id="1_fjbnq"]
+[ext_resource type="Texture2D" uid="uid://cjc7cofopoiqi" path="res://assets/sprites/Breeze/Breeze_0008.png" id="1_vtmtw"]
+[ext_resource type="Texture2D" uid="uid://28fv4crpfow2" path="res://assets/sprites/Breeze/Breeze_0009.png" id="2_5dsdf"]
+[ext_resource type="Texture2D" uid="uid://jtkj4so5hqub" path="res://assets/sprites/Breeze/Breeze_0010.png" id="3_ee285"]
+[ext_resource type="Texture2D" uid="uid://mrmm6tm6er2l" path="res://assets/sprites/Breeze/Breeze_0011.png" id="4_5rq63"]
+[ext_resource type="Texture2D" uid="uid://6dfcsddbhif" path="res://assets/sprites/Breeze/Breeze_0012.png" id="5_2yuxv"]
+[ext_resource type="Texture2D" uid="uid://24mbh3q3e3s3" path="res://assets/sprites/Breeze/Breeze_0013.png" id="6_cjt35"]
+[ext_resource type="Texture2D" uid="uid://l45vwryg6uei" path="res://assets/sprites/Breeze/Breeze_0014.png" id="7_ep4by"]
+[ext_resource type="Texture2D" uid="uid://b4kkhyqsvpv55" path="res://assets/sprites/Breeze/Breeze_0015.png" id="8_buy20"]
+[ext_resource type="AudioStream" uid="uid://wqjkpau7qmvj" path="res://assets/sounds/breeze_attack.wav" id="10_rsgj7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyjxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vtmtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5dsdf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ee285")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5rq63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2yuxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cjt35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ep4by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_buy20")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co54r"]
+size = Vector2(46, 77)
+
+[node name="Tornado" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_fjbnq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qyjxa")
+autoplay = "default"
+frame = 4
+frame_progress = 0.939543
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_co54r")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_rsgj7")
+pitch_scale = 2.0
+autoplay = true
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

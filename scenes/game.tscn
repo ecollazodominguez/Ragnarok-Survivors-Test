@@ -12,7 +12,7 @@ script = ExtResource("3_dx7ga")
 time_start = 0
 time_end = 1200
 enemy = ExtResource("3_8x5as")
-enemy_num = 2
+enemy_num = 4
 enemy_spawn_delay = 1
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rtkpu"]

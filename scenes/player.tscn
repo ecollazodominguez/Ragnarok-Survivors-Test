@@ -329,11 +329,17 @@ shape = SubResource("CapsuleShape2D_3fonq")
 [node name="Attack" type="Node2D" parent="."]
 
 [node name="IceSpearTimer" type="Timer" parent="Attack"]
-autostart = true
 
 [node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer"]
 wait_time = 0.075
-autostart = true
+
+[node name="TornadoTimer" type="Timer" parent="Attack"]
+wait_time = 3.0
+
+[node name="TornadoAttackTimer" type="Timer" parent="Attack/TornadoTimer"]
+wait_time = 0.2
+
+[node name="JavelinContainer" type="Node2D" parent="Attack"]
 
 [node name="EnemyDetectionArea" type="Area2D" parent="."]
 z_index = 1
@@ -349,6 +355,8 @@ shape = SubResource("CircleShape2D_gf1kl")
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
 [connection signal="timeout" from="Attack/IceSpearTimer/IceSpearAttackTimer" to="." method="_on_ice_spear_attack_timer_timeout"]
+[connection signal="timeout" from="Attack/TornadoTimer" to="." method="_on_tornado_timer_timeout"]
+[connection signal="timeout" from="Attack/TornadoTimer/TornadoAttackTimer" to="." method="_on_tornado_attack_timer_timeout"]
 [connection signal="body_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 

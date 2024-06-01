@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5owiwm7sf0it"]
+
+[ext_resource type="Texture2D" uid="uid://c82svxin2a6u0" path="res://assets/sprites/Javelin/Javelin_0002.png" id="1_a0xvd"]
+[ext_resource type="Script" path="res://scripts/javelin.gd" id="1_j6qpq"]
+[ext_resource type="AudioStream" uid="uid://bybvgwb3v3lhb" path="res://assets/sounds/lg_cannonspear.wav" id="2_5lubm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ctpw"]
+size = Vector2(103.238, 11.3137)
+
+[node name="Javelin" type="Area2D" groups=["attack"]]
+top_level = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_j6qpq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.500003, 0.499997)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_1ctpw")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a0xvd")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
+
+[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5lubm")
+bus = &"SFX"
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="ChangeDirectionTimer" to="." method="_on_change_direction_timer_timeout"]
+[connection signal="finished" from="SoundEffect" to="." method="_on_sound_effect_finished"]

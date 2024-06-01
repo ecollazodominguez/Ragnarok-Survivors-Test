@@ -4,19 +4,34 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 var hp = 50
-
+var last_movement = Vector2.UP
 #Attacks
 var iceSpear = preload("res://scenes/ice_spear.tscn")
+var tornado = preload("res://scenes/tornado.tscn")
+var javelin = preload("res://scenes/javelin.tscn")
 
 #AttackNodes
 @onready var ice_spear_timer = $Attack/IceSpearTimer
 @onready var ice_spear_attack_timer = $Attack/IceSpearTimer/IceSpearAttackTimer
+@onready var tornado_timer = $Attack/TornadoTimer
+@onready var tornado_attack_timer = $Attack/TornadoTimer/TornadoAttackTimer
+@onready var javelin_container = $Attack/JavelinContainer
 
 #IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 1.0
 var icespear_level = 1
+
+#Tornado
+var tornado_ammo = 0
+var tornado_baseammo = 2
+var tornado_attackspeed = 1.0
+var tornado_level = 1
+
+#Javelin
+var javelin_ammo = 2
+var javelin_level = 1
 
 #Enemy Quantity Around
 var enemy_close = []
@@ -35,6 +50,12 @@ func attack():
 		ice_spear_timer.wait_time = icespear_attackspeed
 		if ice_spear_timer.is_stopped():
 			ice_spear_timer.start()
+	if tornado_level > 0:
+		tornado_timer.wait_time = tornado_attackspeed
+		if tornado_timer.is_stopped():
+			tornado_timer.start()
+	if javelin_level > 0:
+		spawn_javelin()
 	
 	
 func movement():
@@ -42,6 +63,7 @@ func movement():
 	var y_mov= Input.get_action_strength("down") - Input.get_action_strength("up")
 	spriteDirection()
 	var mov = Vector2(x_mov,y_mov)
+	last_movement = mov
 	velocity = mov.normalized()*SPEED
 	move_and_slide()
 	
@@ -125,6 +147,33 @@ func _on_ice_spear_attack_timer_timeout():
 		else:
 			ice_spear_attack_timer.stop()
 			
+func _on_tornado_timer_timeout():
+	tornado_ammo += tornado_baseammo
+	tornado_attack_timer.start()
+
+
+func _on_tornado_attack_timer_timeout():
+	if tornado_ammo > 0:
+		var tornado_attack = tornado.instantiate()
+		tornado_attack.position = position
+		tornado_attack.last_movement = last_movement
+		tornado_attack.level = tornado_level
+		add_child(tornado_attack)
+		tornado_ammo -= 1
+		if tornado_ammo > 0:
+			tornado_attack_timer.start()
+		else:
+			tornado_attack_timer.stop()
+	
+func spawn_javelin():
+	var get_javelin_total = javelin_container.get_child_count()
+	var calc_spawns = javelin_ammo - get_javelin_total
+	while calc_spawns > 0:
+		var javelin_spawn = javelin.instantiate()
+		javelin_spawn.global_position = global_position
+		javelin_container.add_child(javelin_spawn)
+		calc_spawns -= 1
+	
 func get_random_target():
 	if enemy_close.size() > 0:
 		return enemy_close.pick_random().global_position
@@ -152,3 +201,6 @@ func _on_enemy_detection_area_body_entered(body):
 func _on_enemy_detection_area_body_exited(body):
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+
+
+
