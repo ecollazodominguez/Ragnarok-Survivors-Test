@@ -3,13 +3,18 @@ extends CharacterBody2D
 @export var speed = 100.0
 @export var hp = 10
 @export var knockback_recovery = 3.5
+@export var experience = 1
+
 var knockback = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var loot_container = get_tree().get_first_node_in_group("loot")
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var death_timer = $DeathTimer
 @onready var hurtbox = $Hurtbox
 @onready var hit_sound = $hit_sound
+
+var exp_gem_scene = preload("res://scenes/experience_gem.tscn")
 
 signal remove_from_array(object)
 
@@ -36,6 +41,10 @@ func death():
 		set_physics_process(false)
 		hurtbox.queue_free()
 		animated_sprite_2d.play("death")
+		var new_gem = exp_gem_scene.instantiate()
+		new_gem.global_position = global_position
+		new_gem.experience = experience
+		loot_container.call_deferred("add_child", new_gem)
 		death_timer.start()
 
 

@@ -35,3 +35,4 @@ autoplay = true
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="SoundEffect" to="." method="_on_sound_effect_finished"]

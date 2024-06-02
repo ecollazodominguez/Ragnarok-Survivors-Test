@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds6opjtn7d1qo"]
+
+[ext_resource type="Texture2D" uid="uid://cql1hknbsalhm" path="res://assets/sprites/Gemstones/Blue_gemstone.png" id="1_2duyd"]
+[ext_resource type="Script" path="res://scripts/experience_gem.gd" id="1_825m0"]
+[ext_resource type="AudioStream" uid="uid://n3v53t7u8fa7" path="res://assets/sounds/experience.wav" id="2_2hxch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqf4o"]
+size = Vector2(12, 16)
+
+[node name="ExperienceGem" type="Area2D" groups=["loot"]]
+scale = Vector2(1.3, 1.3)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_825m0")
+experience = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2duyd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sqf4o")
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2hxch")
+pitch_scale = 2.5
+bus = &"SFX"
+
+[connection signal="finished" from="SoundEffect" to="." method="_on_sound_effect_finished"]

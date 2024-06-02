@@ -11,6 +11,8 @@ var target = Vector2.ZERO
 var angle = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var sprite_2d = $Sprite2D
+
 
 signal remove_from_array(object)
 
@@ -20,7 +22,7 @@ func _ready():
 	match level:
 		1:
 			level = 1
-			penetration = 5
+			penetration = 1
 			speed = 500
 			damage = 10
 			knockback_amount = 150
@@ -35,9 +37,14 @@ func enemy_hit(hit = 1):
 	penetration -=hit
 	if penetration <= 0:
 		emit_signal("remove_from_array",self)
-		queue_free()
+		sprite_2d.visible = false
 
 
 func _on_timer_timeout():
 	emit_signal("remove_from_array",self)
 	queue_free()
+
+
+func _on_sound_effect_finished():
+	if penetration <= 0:
+		queue_free()

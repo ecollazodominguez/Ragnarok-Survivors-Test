@@ -1,6 +1,8 @@
 extends CharacterBody2D
+
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var animated_sprite_2d_2 = $AnimatedSprite2D2
+@onready var experience_detection_node = $ExperienceDetectionNode
 
 const SPEED = 200.0
 var hp = 50
@@ -203,4 +205,13 @@ func _on_enemy_detection_area_body_exited(body):
 		enemy_close.erase(body)
 
 
+func _on_grab_area_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
 
+
+func _on_collect_area_area_entered(area):
+	if area.is_in_group("loot"):
+		var gem_exp = area.collect()
+		experience_detection_node.calculate_experience(gem_exp)
+		

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0dxfi1p583c4"]
+
+[ext_resource type="Script" path="res://scripts/experience_detection_node.gd" id="1_is6ka"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cphpf"]
+radius = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3k1j"]
+size = Vector2(20, 65)
+
+[node name="ExperienceDetectionNode" type="Node2D"]
+script = ExtResource("1_is6ka")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_cphpf")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("RectangleShape2D_m3k1j")
