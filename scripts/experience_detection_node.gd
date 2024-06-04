@@ -18,8 +18,8 @@ func calculate_experience(gem_exp = 0):
 		collected_experience = (experience + collected_experience) - exp_required
 		experience = 0
 		experience_level +=1
-		game_manager.change_label_level(experience_level)
-		exp_required = calculate_experience_cap()
+		game_manager.levelup()
+		#TODO fix multiple level up once showing multiple options
 		calculate_experience()
 	else:
 		experience += collected_experience

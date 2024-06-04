@@ -13,6 +13,7 @@ var knockback = Vector2.ZERO
 @onready var death_timer = $DeathTimer
 @onready var hurtbox = $Hurtbox
 @onready var hit_sound = $hit_sound
+@onready var collision_shape_2d = $CollisionShape2D
 
 var exp_gem_scene = preload("res://scenes/experience_gem.tscn")
 
@@ -39,12 +40,15 @@ func spriteDirection():
 func death():
 		emit_signal("remove_from_array",self)
 		set_physics_process(false)
+		collision_shape_2d.set_deferred("disabled", true)
 		hurtbox.queue_free()
 		animated_sprite_2d.play("death")
-		var new_gem = exp_gem_scene.instantiate()
-		new_gem.global_position = global_position
-		new_gem.experience = experience
-		loot_container.call_deferred("add_child", new_gem)
+		
+		if randi_range(0,1) == 1:
+			var new_gem = exp_gem_scene.instantiate()
+			new_gem.global_position = global_position
+			new_gem.experience = experience
+			loot_container.call_deferred("add_child", new_gem)
 		death_timer.start()
 
 

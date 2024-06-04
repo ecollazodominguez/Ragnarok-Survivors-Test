@@ -7,6 +7,7 @@ extends CharacterBody2D
 const SPEED = 200.0
 var hp = 50
 var last_movement = Vector2.UP
+var level = 1
 #Attacks
 var iceSpear = preload("res://scenes/ice_spear.tscn")
 var tornado = preload("res://scenes/tornado.tscn")
