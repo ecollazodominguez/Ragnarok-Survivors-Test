@@ -33,7 +33,7 @@ func levelup():
 	sound_effect.play()
 	change_label_level()
 	var tween = level_up.create_tween()
-	tween.tween_property(level_up, "scale", Vector2(1,1),0.6).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.tween_property(level_up, "scale", Vector2(1,1),0.4).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
 	tween.play()
 	level_up.visible = true
 	var options = 0

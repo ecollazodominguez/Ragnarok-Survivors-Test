@@ -1,7 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcbsj5537odhu"]
+[gd_scene load_steps=7 format=3 uid="uid://dcbsj5537odhu"]
 
 [ext_resource type="Texture2D" uid="uid://boxsdtthgvoks" path="res://icon.svg" id="1_tc2kk"]
 [ext_resource type="Script" path="res://scripts/item_option.gd" id="1_xdgcx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ioxd"]
+bg_color = Color(0.485943, 0.817097, 0.995756, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 3
+shadow_offset = Vector2(2, 2)
 
 [sub_resource type="LabelSettings" id="LabelSettings_pgkjl"]
 font_size = 28
@@ -19,65 +33,62 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="ItemOption" type="ColorRect"]
+[node name="ItemOption" type="PanelContainer"]
 custom_minimum_size = Vector2(380, 140)
 offset_right = 380.0
 offset_bottom = 140.0
-color = Color(0.552956, 0.552956, 0.552956, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_0ioxd")
 script = ExtResource("1_xdgcx")
 
-[node name="Option" type="ColorRect" parent="."]
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+
+[node name="Option" type="ColorRect" parent="Button"]
 custom_minimum_size = Vector2(40, 40)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.024
-anchor_top = 0.047
-anchor_right = 0.024
-anchor_bottom = 0.047
-offset_left = -0.12
-offset_top = -0.46
-offset_right = 79.88
-offset_bottom = 79.54
+layout_mode = 2
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 65.0
+offset_bottom = 67.0
 color = Color(0, 0, 0, 1)
 
-[node name="ItemIcon" type="TextureRect" parent="Option"]
+[node name="ItemIcon" type="TextureRect" parent="Button/Option"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-scale = Vector2(0.62, 0.62)
 texture = ExtResource("1_tc2kk")
+expand_mode = 2
 
-[node name="lbl_name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 97.0
-offset_top = 24.0
-offset_right = 201.0
-offset_bottom = 74.0
+[node name="lbl_name" type="Label" parent="Button"]
+layout_mode = 2
+offset_left = 77.0
+offset_top = 19.0
+offset_right = 216.0
+offset_bottom = 58.0
 text = "Name"
 label_settings = SubResource("LabelSettings_pgkjl")
-horizontal_alignment = 1
 
-[node name="lbl_description" type="Label" parent="."]
-layout_mode = 0
+[node name="lbl_description" type="Label" parent="Button"]
+layout_mode = 2
 offset_left = 10.0
-offset_top = 92.0
-offset_right = 332.0
-offset_bottom = 120.0
-text = "Description of item
+offset_top = 76.0
+offset_right = 380.0
+offset_bottom = 133.0
+text = "Description of item Description of item Description of item Description of item
 "
 label_settings = SubResource("LabelSettings_k1dcc")
 autowrap_mode = 3
 
-[node name="lbl_level" type="Label" parent="."]
-layout_mode = 0
-offset_left = 244.0
-offset_top = 7.0
-offset_right = 375.0
-offset_bottom = 57.0
+[node name="lbl_level" type="Label" parent="Button"]
+layout_mode = 2
+offset_left = 264.0
+offset_top = 4.0
+offset_right = 365.0
+offset_bottom = 43.0
 text = "Level: 1"
 label_settings = SubResource("LabelSettings_0byqc")
-horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
