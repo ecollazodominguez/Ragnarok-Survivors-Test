@@ -19,12 +19,29 @@ signal remove_from_array(object)
 func _ready():
 	match level:
 		1:
-			level = 1
 			penetration = 999
 			speed = 500
 			damage = 10
 			knockback_amount = 150
-			attack_size = 1.0
+			attack_size = 1.0 * (1 + player.spell_size)
+		2:
+			penetration = 999
+			speed = 500
+			damage = 10
+			knockback_amount = 150
+			attack_size = 1.0 * (1 + player.spell_size)
+		3:
+			penetration = 999
+			speed = 500
+			damage = 10
+			knockback_amount = 150
+			attack_size = 1.0 * (1 + player.spell_size)
+		4:
+			penetration = 999
+			speed = 500
+			damage = 10
+			knockback_amount = 150 * 1.25
+			attack_size = 1.0 * (1 + player.spell_size)
 	
 	var move_to_less = Vector2.ZERO
 	var move_to_more = Vector2.ZERO

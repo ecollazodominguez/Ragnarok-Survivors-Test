@@ -19,8 +19,6 @@ func calculate_experience(gem_exp = 0):
 		experience = 0
 		experience_level +=1
 		game_manager.levelup()
-		#TODO fix multiple level up once showing multiple options
-		calculate_experience()
 	else:
 		experience += collected_experience
 		collected_experience = 0

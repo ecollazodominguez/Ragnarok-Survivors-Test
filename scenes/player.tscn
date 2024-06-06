@@ -334,7 +334,7 @@ shape = SubResource("CapsuleShape2D_3fonq")
 [node name="IceSpearTimer" type="Timer" parent="Attack"]
 
 [node name="IceSpearAttackTimer" type="Timer" parent="Attack/IceSpearTimer"]
-wait_time = 0.075
+wait_time = 0.33
 
 [node name="TornadoTimer" type="Timer" parent="Attack"]
 wait_time = 3.0

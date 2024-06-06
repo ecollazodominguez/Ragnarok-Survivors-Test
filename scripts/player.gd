@@ -4,10 +4,17 @@ extends CharacterBody2D
 @onready var animated_sprite_2d_2 = $AnimatedSprite2D2
 @onready var experience_detection_node = $ExperienceDetectionNode
 
-const SPEED = 200.0
-var hp = 50
+var movement_speed = 200.0
+var hp = 80
+var max_hp = 80
 var last_movement = Vector2.UP
 var level = 1
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
+
 #Attacks
 var iceSpear = preload("res://scenes/ice_spear.tscn")
 var tornado = preload("res://scenes/tornado.tscn")
@@ -23,18 +30,18 @@ var javelin = preload("res://scenes/javelin.tscn")
 #IceSpear
 var icespear_ammo = 0
 var icespear_baseammo = 1
-var icespear_attackspeed = 1.0
+var icespear_attackspeed = 2
 var icespear_level = 1
 
 #Tornado
 var tornado_ammo = 0
-var tornado_baseammo = 2
-var tornado_attackspeed = 1.0
-var tornado_level = 1
+var tornado_baseammo = 0
+var tornado_attackspeed = 3
+var tornado_level = 0
 
 #Javelin
-var javelin_ammo = 2
-var javelin_level = 1
+var javelin_ammo = 0
+var javelin_level = 0
 
 #Enemy Quantity Around
 var enemy_close = []
@@ -49,12 +56,13 @@ func _physics_process(delta):
 	movement()
 	
 func attack():
+	#TODO: make icespears have a proper cooldown instead of rapidfire (wait spearTimer to Attack Timer to end and then reload?)
 	if icespear_level > 0:
-		ice_spear_timer.wait_time = icespear_attackspeed
+		ice_spear_timer.wait_time = icespear_attackspeed * (1 - spell_cooldown)
 		if ice_spear_timer.is_stopped():
 			ice_spear_timer.start()
 	if tornado_level > 0:
-		tornado_timer.wait_time = tornado_attackspeed
+		tornado_timer.wait_time = tornado_attackspeed * (1 - spell_cooldown)
 		if tornado_timer.is_stopped():
 			tornado_timer.start()
 	if javelin_level > 0:
@@ -67,7 +75,7 @@ func movement():
 	spriteDirection()
 	var mov = Vector2(x_mov,y_mov)
 	last_movement = mov
-	velocity = mov.normalized()*SPEED
+	velocity = mov.normalized() * movement_speed
 	move_and_slide()
 	
 func spriteDirection():
@@ -128,16 +136,18 @@ func spriteDirection():
 
 
 func _on_hurtbox_hurt(damage, _angle, _knockback_amount):
-	hp -= damage
+	hp -= clamp(damage - armor, 1.0, 999.0)
 
 
 #Loading ammo
 func _on_ice_spear_timer_timeout():
-	icespear_ammo += icespear_baseammo
+	#print("lol")
+	icespear_ammo = icespear_baseammo + additional_attacks
 	ice_spear_attack_timer.start()
 
 #Shooting
 func _on_ice_spear_attack_timer_timeout():
+	#print(icespear_ammo)
 	if icespear_ammo > 0:
 		var icespear_attack = iceSpear.instantiate()
 		icespear_attack.position = position
@@ -151,7 +161,7 @@ func _on_ice_spear_attack_timer_timeout():
 			ice_spear_attack_timer.stop()
 			
 func _on_tornado_timer_timeout():
-	tornado_ammo += tornado_baseammo
+	tornado_ammo = tornado_baseammo + additional_attacks
 	tornado_attack_timer.start()
 
 
@@ -170,12 +180,17 @@ func _on_tornado_attack_timer_timeout():
 	
 func spawn_javelin():
 	var get_javelin_total = javelin_container.get_child_count()
-	var calc_spawns = javelin_ammo - get_javelin_total
+	var calc_spawns = (javelin_ammo + additional_attacks) - get_javelin_total
 	while calc_spawns > 0:
 		var javelin_spawn = javelin.instantiate()
 		javelin_spawn.global_position = global_position
 		javelin_container.add_child(javelin_spawn)
 		calc_spawns -= 1
+	#Upgrade Javelin
+	var get_javelins = javelin_container.get_children()
+	for javelin in get_javelins:
+		if javelin.has_method("update_javelin"):
+			javelin.update_javelin()
 	
 func get_random_target():
 	if enemy_close.size() > 0:
