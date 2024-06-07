@@ -112,7 +112,7 @@ collision_mask = 5
 motion_mode = 1
 safe_margin = 13.301
 script = ExtResource("1_ri56l")
-experience = 300
+experience = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7302t")
@@ -136,6 +136,7 @@ shape = SubResource("CircleShape2D_0wpld")
 [node name="Hitbox" parent="." instance=ExtResource("14_vj8ys")]
 collision_layer = 2
 collision_mask = 2
+damage = 5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_6jc5l")

@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var animated_sprite_2d_2 = $AnimatedSprite2D2
 @onready var experience_detection_node = $ExperienceDetectionNode
+@onready var health_bar = $HealthBar
+
 
 var movement_speed = 200.0
 var hp = 80
@@ -51,6 +53,8 @@ var enemy_close = []
 
 func _ready():
 	attack()
+	health_bar.max_value = max_hp
+	health_bar.value = hp
 
 func _physics_process(delta):
 	movement()
@@ -137,6 +141,11 @@ func spriteDirection():
 
 func _on_hurtbox_hurt(damage, _angle, _knockback_amount):
 	hp -= clamp(damage - armor, 1.0, 999.0)
+	if hp <= 0:
+		hp = 0
+		#Death
+	health_bar.value = hp
+	print(hp)
 
 
 #Loading ammo

@@ -14,20 +14,53 @@ extends Node
 @onready var sound_effect = $GUILayer/GUI/LevelUp/SoundEffect
 @onready var itemOptions = preload("res://scenes/item_option.tscn")
 
+#TIMER
+@onready var lbl_timer = $GUILayer/GUI/lbl_timer
+var pass_time = 0
+
+#COLLECTED ITEMS
+@onready var collected_weapons = $GUILayer/GUI/CollectedItems/VBoxContainer/CollectedWeapons
+@onready var collected_upgrades = $GUILayer/GUI/CollectedItems/VBoxContainer/CollectedUpgrades
+@onready var item_container = preload("res://scenes/Item_container.tscn")
+
+
 #Player
 @onready var player = get_tree().get_first_node_in_group("player")
 var level = 1
 
 #UPGRADES
-var collected_upgrades = []
+var collected_upgrades_list = []
 var upgrade_options_list = []
 
 #Fix relation between gamemanager and experience node
 @onready var experience_manager = get_tree().get_first_node_in_group("experience")
 
+func _physics_process(delta):
+	pass_time +=delta
+	change_time()
 
+func adjust_gui_collection(upgrade):
+	var upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["display_name"]
+	var type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if UpgradeDb.UPGRADES[upgrade]["level"] == "Level: 1":
+		var new_item_container = item_container.instantiate()
+		new_item_container.upgrade = upgrade
+		match type:
+			"weapon":
+				collected_weapons.add_child(new_item_container)
+			"upgrade":
+				collected_upgrades.add_child(new_item_container)
 
-
+func change_time():
+	var time = int(pass_time)
+	var minutes = int(time/60.0)
+	var seconds = time % 60
+	if minutes < 10:
+		minutes = str(0,minutes)
+	if seconds < 10:
+		seconds = str(0,seconds)
+	lbl_timer.text = str(minutes,":",seconds)
+	
 
 func set_expbar(set_value = 1, set_max_value = 100):
 	exp_bar.value = set_value
@@ -58,12 +91,13 @@ func levelup():
 	
 func upgrade_character(upgrade):
 	apply_upgrade_levels(upgrade)
+	adjust_gui_collection(upgrade)
 	player.attack() #refresh weapons
 	var options_children = upgrade_options.get_children()
 	for item in options_children:
 		item.queue_free()
 	upgrade_options_list.clear()
-	collected_upgrades.append(upgrade)
+	collected_upgrades_list.append(upgrade)
 	level_up.visible = false
 	level_up.set_deferred("scale", Vector2(0.1,0.1))
 	get_tree().paused = false
@@ -121,14 +155,14 @@ func apply_upgrade_levels(upgrade):
 func get_random_item():
 	var dblist = []
 	for i in UpgradeDb.UPGRADES:
-		if i in collected_upgrades || i in upgrade_options_list: #Find already collected upgrades or if it is already in the options to choose
+		if i in collected_upgrades_list || i in upgrade_options_list: #Find already collected upgrades or if it is already in the options to choose
 			pass
 		elif UpgradeDb.UPGRADES[i]["type"] == "item": #If it is a type Item.Don't pick food
 			pass
 		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Check prerequisites
 			var to_add = true
 			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
-				if not n in collected_upgrades: #If you dont have the prerequisite check to not add
+				if not n in collected_upgrades_list: #If you dont have the prerequisite check to not add
 					to_add = false
 			if to_add:
 				dblist.append(i)

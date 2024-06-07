@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bbjcemj1n82n8"]
+[gd_scene load_steps=66 format=3 uid="uid://bbjcemj1n82n8"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_v268a"]
 [ext_resource type="Texture2D" uid="uid://csflcqmdbm4o2" path="res://assets/sprites/ArcherF/archerF_0056.png" id="2_uowjn"]
@@ -56,6 +56,20 @@
 [ext_resource type="Texture2D" uid="uid://dcu1nh8yeaipo" path="res://assets/sprites/HeadsF/HeadF36_0003.png" id="53_mn1bg"]
 [ext_resource type="Script" path="res://scripts/PivotFramesHeadsF.gd" id="54_yfiex"]
 [ext_resource type="PackedScene" uid="uid://c0dxfi1p583c4" path="res://scenes/experience_detection_node.tscn" id="56_n428u"]
+
+[sub_resource type="Gradient" id="Gradient_j5xxl"]
+offsets = PackedFloat32Array(0.994413)
+colors = PackedColorArray(0.741176, 0.741176, 0.741176, 0.686275)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yji25"]
+gradient = SubResource("Gradient_j5xxl")
+
+[sub_resource type="Gradient" id="Gradient_oi2mw"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.419608, 0.992157, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8kfgr"]
+gradient = SubResource("Gradient_oi2mw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqxgy"]
 size = Vector2(11, 12)
@@ -294,6 +308,17 @@ collision_layer = 3
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_v268a")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+self_modulate = Color(1, 1, 1, 0.756863)
+offset_left = -31.0
+offset_top = 48.0
+offset_right = 29.0
+offset_bottom = 54.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_yji25")
+texture_progress = SubResource("GradientTexture1D_8kfgr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
