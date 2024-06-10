@@ -3,8 +3,12 @@ extends Node2D
 @export var spawns: Array[Spawn_info] = []
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var game_manager = %GameManager
 
 var time = 0
+
+func _ready():
+	time = game_manager.pass_time
 
 func _on_timer_timeout():
 	time +=1

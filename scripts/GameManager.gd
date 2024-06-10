@@ -141,7 +141,7 @@ func apply_upgrade_levels(upgrade):
 		"armor1","armor2","armor3","armor4":
 			player.armor += 1
 		"speed1","speed2","speed3","speed4":
-			player.movement_speed *= 1.10
+			player.movement_speed += 20
 		"tome1","tome2","tome3","tome4":
 			player.spell_size += 0.10
 		"scroll1","scroll2","scroll3","scroll4":
@@ -166,7 +166,6 @@ func get_random_item():
 					to_add = false
 			if to_add:
 				dblist.append(i)
-
 		else:
 			dblist.append(i)
 	if dblist.size() > 0:

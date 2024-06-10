@@ -12,6 +12,7 @@ var angle = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var sprite_2d = $Sprite2D
+@onready var sound_effect = $SoundEffect
 
 
 signal remove_from_array(object)
@@ -54,7 +55,8 @@ func enemy_hit(hit = 1):
 	penetration -=hit
 	if penetration <= 0:
 		emit_signal("remove_from_array",self)
-		sprite_2d.visible = false
+		if !sound_effect.playing:
+			_on_sound_effect_finished()
 
 
 func _on_timer_timeout():

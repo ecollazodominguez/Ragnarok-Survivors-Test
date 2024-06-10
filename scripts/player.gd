@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d_2 = $AnimatedSprite2D2
 @onready var experience_detection_node = $ExperienceDetectionNode
 @onready var health_bar = $HealthBar
+@onready var game_manager = %GameManager
 
 
 var movement_speed = 200.0
@@ -33,7 +34,7 @@ var javelin = preload("res://scenes/javelin.tscn")
 var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 2
-var icespear_level = 1
+var icespear_level = 0
 
 #Tornado
 var tornado_ammo = 0
@@ -52,6 +53,7 @@ var enemy_close = []
 
 
 func _ready():
+	game_manager.upgrade_character("ice_spear1") #placeholder
 	attack()
 	health_bar.max_value = max_hp
 	health_bar.value = hp

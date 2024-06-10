@@ -1,0 +1,151 @@
+[gd_scene load_steps=20 format=3 uid="uid://2byoqhf5pism"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_rqcup"]
+[ext_resource type="Texture2D" uid="uid://d7622uyia11j" path="res://assets/sprites/Lunatic/Lunatic_0024.png" id="2_y3v4v"]
+[ext_resource type="Texture2D" uid="uid://bko6n5e2pf2fv" path="res://assets/sprites/Lunatic/Lunatic_0025.png" id="3_uubd0"]
+[ext_resource type="Texture2D" uid="uid://ck725v5vsc6aj" path="res://assets/sprites/Lunatic/Lunatic_0030.png" id="4_er5s7"]
+[ext_resource type="Texture2D" uid="uid://dr3fktvwsymcf" path="res://assets/sprites/Lunatic/Lunatic_0000.png" id="5_wc8j1"]
+[ext_resource type="Texture2D" uid="uid://yew5lnt27at8" path="res://assets/sprites/Lunatic/Lunatic_0001.png" id="6_kj64x"]
+[ext_resource type="Texture2D" uid="uid://dydldwikr0lg" path="res://assets/sprites/Lunatic/Lunatic_0002.png" id="7_6gnf4"]
+[ext_resource type="Texture2D" uid="uid://djd47lapvlb5q" path="res://assets/sprites/Lunatic/Lunatic_0003.png" id="8_t448u"]
+[ext_resource type="Texture2D" uid="uid://c2a2ih2xcl2dd" path="res://assets/sprites/Lunatic/Lunatic_0011.png" id="9_3x2x1"]
+[ext_resource type="Texture2D" uid="uid://bya7wnqeiu2eu" path="res://assets/sprites/Lunatic/Lunatic_0008.png" id="10_2yawl"]
+[ext_resource type="Texture2D" uid="uid://e658jktt5l33" path="res://assets/sprites/Lunatic/Lunatic_0009.png" id="11_xgsts"]
+[ext_resource type="Texture2D" uid="uid://gxqvaal0vbrb" path="res://assets/sprites/Lunatic/Lunatic_0010.png" id="12_jbl1m"]
+[ext_resource type="PackedScene" uid="uid://ooeko6fn5w4p" path="res://scenes/hurtbox.tscn" id="17_fhqi3"]
+[ext_resource type="PackedScene" uid="uid://c4lvx1u2gmohq" path="res://scenes/hitbox.tscn" id="18_8nm71"]
+[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/hit_sound.wav" id="19_mj1lw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7302t"]
+radius = 12.0416
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dj4jy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_y3v4v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uubd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uubd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er5s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er5s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er5s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er5s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er5s7")
+}],
+"loop": true,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wc8j1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kj64x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6gnf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_t448u")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_3x2x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2yawl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_xgsts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jbl1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_3x2x1")
+}],
+"loop": true,
+"name": &"sides",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wpld"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jc5l"]
+radius = 12.0416
+
+[node name="Lunatic" type="CharacterBody2D"]
+z_index = 1
+position = Vector2(58, -17)
+collision_layer = 5
+collision_mask = 5
+motion_mode = 1
+safe_margin = 10.0
+script = ExtResource("1_rqcup")
+speed = 120.0
+hp = 5
+knockback_recovery = 4.5
+experience = 3
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 5)
+shape = SubResource("CircleShape2D_7302t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 4)
+sprite_frames = SubResource("SpriteFrames_dj4jy")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Hurtbox" parent="." instance=ExtResource("17_fhqi3")]
+position = Vector2(-2, 5)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_0wpld")
+
+[node name="Hitbox" parent="." instance=ExtResource("18_8nm71")]
+position = Vector2(-2, 5)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_6jc5l")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.7
+
+[node name="hit_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_mj1lw")
+pitch_scale = 4.0
+max_polyphony = 10
+bus = &"SFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
