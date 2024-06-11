@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://darjkipmtn7hl"]
+
+[ext_resource type="Texture2D" uid="uid://bgq5cpsdyschb" path="res://assets/ui/rag_title.png" id="1_85i3q"]
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_dmolc"]
+[ext_resource type="PackedScene" uid="uid://b6xr2syokqdbv" path="res://scenes/basic_button.tscn" id="2_yusnx"]
+[ext_resource type="Texture2D" uid="uid://bj1cb6qph8dat" path="res://assets/ui/btn_blue.png" id="3_xv2md"]
+[ext_resource type="AudioStream" uid="uid://6xht2lgt7d18" path="res://assets/sounds/click.wav" id="4_f7uws"]
+[ext_resource type="Texture2D" uid="uid://cbkqs7ei4mr8t" path="res://assets/ui/btn_white.png" id="6_wvjki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cgm8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dmolc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -6.0
+offset_right = 13.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_85i3q")
+
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 448.0
+offset_right = 354.0
+offset_bottom = 538.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0cgm8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="StartButton" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_yusnx")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.9
+text = "Start
+"
+texture = ExtResource("3_xv2md")
+sound = ExtResource("4_f7uws")
+
+[node name="ExitButton" parent="TextureRect/PanelContainer/VBoxContainer" instance=ExtResource("2_yusnx")]
+layout_mode = 2
+text = "Exit
+"
+texture = ExtResource("6_wvjki")
+
+[connection signal="button_up" from="TextureRect/PanelContainer/VBoxContainer/StartButton" to="." method="_on_basic_button_button_up"]
+[connection signal="button_up" from="TextureRect/PanelContainer/VBoxContainer/StartButton" to="." method="_on_start_button_button_up"]
+[connection signal="button_up" from="TextureRect/PanelContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_button_up"]
+
+[editable path="TextureRect/PanelContainer/VBoxContainer/StartButton"]

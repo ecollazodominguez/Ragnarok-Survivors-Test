@@ -104,7 +104,7 @@ script = ExtResource("1_xc06e")
 speed = 65.0
 hp = 7
 knockback_recovery = 5.0
-damage = 3
+enemy_damage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7302t")

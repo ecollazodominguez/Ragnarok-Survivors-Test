@@ -15,9 +15,9 @@ var speed = -3.0
 
 
 func _ready():
-	if experience < 5:
+	if experience < 10:
 		return
-	elif experience < 25:
+	elif experience < 30:
 		sprite_2d.texture = spr_red
 	else:
 		sprite_2d.texture = spr_yellow

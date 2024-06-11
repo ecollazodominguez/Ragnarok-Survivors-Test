@@ -106,7 +106,7 @@ speed = 120.0
 hp = 5
 knockback_recovery = 4.5
 experience = 3
-damage = 2
+enemy_damage = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
