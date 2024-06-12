@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var experience_detection_node = $ExperienceDetectionNode
 @onready var health_bar = $HealthBar
 @onready var game_manager = %GameManager
+@onready var mvp_animation = $MvpAnimation
 
 
 var movement_speed = 200.0
@@ -17,6 +18,7 @@ var speed = 0
 var spell_cooldown = 0
 var spell_size = 0
 var additional_attacks = 0
+var dead = false
 
 #Attacks
 var iceSpear = preload("res://scenes/ice_spear.tscn")
@@ -76,13 +78,14 @@ func attack():
 	
 	
 func movement():
-	var x_mov= Input.get_action_strength("right") - Input.get_action_strength("left")
-	var y_mov= Input.get_action_strength("down") - Input.get_action_strength("up")
-	spriteDirection()
-	var mov = Vector2(x_mov,y_mov)
-	last_movement = mov
-	velocity = mov.normalized() * movement_speed
-	move_and_slide()
+	if !dead:
+		var x_mov= Input.get_action_strength("right") - Input.get_action_strength("left")
+		var y_mov= Input.get_action_strength("down") - Input.get_action_strength("up")
+		spriteDirection()
+		var mov = Vector2(x_mov,y_mov)
+		last_movement = mov
+		velocity = mov.normalized() * movement_speed
+		move_and_slide()
 	
 func spriteDirection():
 	var x_mov= Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -144,10 +147,12 @@ func spriteDirection():
 func _on_hurtbox_hurt(damage, _angle, _knockback_amount):
 	hp -= clamp(damage - armor, 1.0, 999.0)
 	if hp <= 0:
+		dead = true
+		animated_sprite_2d.animation = "death"
+		animated_sprite_2d_2.animation = "death"
 		hp = 0
-		#Death
+		game_manager.end_stage()
 	health_bar.value = hp
-	print(hp)
 
 
 #Loading ammo

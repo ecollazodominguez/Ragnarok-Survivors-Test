@@ -32,6 +32,19 @@ var level = 1
 var collected_upgrades_list = []
 var upgrade_options_list = []
 
+#BOSS
+var bossDead = false
+
+#RESULTS
+@onready var lbl_result = $GUILayer/GUI/EndingPanel/MarginContainer/GridContainer/lbl_result
+@onready var ending_panel = $GUILayer/GUI/EndingPanel
+@onready var victory_sound = $GUILayer/GUI/EndingPanel/VictorySound
+
+#STAGE MUSIC
+@onready var stage_music = $"../StageMusic"
+
+
+
 #Fix relation between gamemanager and experience node
 @onready var experience_manager = get_tree().get_first_node_in_group("experience")
 
@@ -52,6 +65,8 @@ func adjust_gui_collection(upgrade):
 				collected_upgrades.add_child(new_item_container)
 
 func change_time():
+	if pass_time >= 0 && bossDead:
+		end_stage()
 	var time = int(pass_time)
 	var minutes = int(time/60.0)
 	var seconds = time % 60
@@ -61,6 +76,23 @@ func change_time():
 		seconds = str(0,seconds)
 	lbl_timer.text = str(minutes,":",seconds)
 	
+func setBossDead():
+	bossDead = !bossDead
+	
+func end_stage():
+	stage_music.stop()
+	if bossDead:
+		victory_sound.play()
+	else:
+		await get_tree().create_timer(1.5).timeout
+	change_label_result()
+	get_tree().paused = true
+	ending_panel.visible = true
+	var tween = ending_panel.create_tween()
+	tween.tween_property(ending_panel,"position", Vector2(396,126),1.5).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	tween.play()
+	
+	
 
 func set_expbar(set_value = 1, set_max_value = 100):
 	exp_bar.value = set_value
@@ -68,6 +100,12 @@ func set_expbar(set_value = 1, set_max_value = 100):
 	
 func change_label_level():
 	label_level.text = str("Level: ", player.level)
+	
+func change_label_result():
+	if bossDead:
+		lbl_result.text = "Victory !!"
+	else:
+		lbl_result.text = "Game Over"
 	
 func levelup():
 	get_tree().paused = true
@@ -104,7 +142,6 @@ func upgrade_character(upgrade):
 	experience_manager.calculate_experience()
 	
 func apply_upgrade_levels(upgrade):
-	print(upgrade)
 	match upgrade:
 		"ice_spear1":
 			player.icespear_level = 1
@@ -174,3 +211,8 @@ func get_random_item():
 		return randomitem
 	else:
 		return null
+
+
+func _on_menu_button_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

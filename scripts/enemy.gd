@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Enemy
+
 @export var speed = 100.0
 @export var hp = 10
 @export var knockback_recovery = 3.5
