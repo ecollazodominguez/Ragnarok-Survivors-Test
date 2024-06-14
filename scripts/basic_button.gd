@@ -16,4 +16,3 @@ func _ready():
 
 func _on_pressed():
 	sound_click.play()
-	self.disabled = true

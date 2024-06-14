@@ -279,6 +279,7 @@ alignment = 1
 [node name="SoundEffect" type="AudioStreamPlayer" parent="GameManager/GUILayer/GUI/LevelUp"]
 stream = ExtResource("3_diww6")
 pitch_scale = 3.2
+bus = &"SFX"
 
 [node name="EndingPanel" type="PanelContainer" parent="GameManager/GUILayer/GUI"]
 process_mode = 2
@@ -324,7 +325,7 @@ sound = ExtResource("6_5k6tp")
 [node name="VictorySound" type="AudioStreamPlayer2D" parent="GameManager/GUILayer/GUI/EndingPanel"]
 process_mode = 3
 stream = ExtResource("7_6epfo")
-volume_db = 14.972
+volume_db = 7.0
 bus = &"SFX"
 
 [node name="CollectedItems" type="PanelContainer" parent="GameManager/GUILayer/GUI"]
@@ -360,7 +361,7 @@ position = Vector2(34, -52)
 process_mode = 3
 stream = ExtResource("6_vvb8k")
 autoplay = true
-bus = &"Music"
+bus = &"BGM"
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(0, 2)
