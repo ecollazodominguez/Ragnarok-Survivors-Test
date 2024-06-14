@@ -12,4 +12,5 @@ func _on_tree_exiting():
 func _on_animated_sprite_2d_animation_changed():
 	if animated_sprite_2d.animation == "death":
 		player.mvp_animation.play()
+		player.hurtbox.queue_free()
 		mvp_sound.play()

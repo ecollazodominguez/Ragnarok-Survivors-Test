@@ -53,7 +53,7 @@ func _physics_process(delta):
 	change_time()
 
 func adjust_gui_collection(upgrade):
-	var upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["display_name"]
+	#var upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["display_name"]
 	var type = UpgradeDb.UPGRADES[upgrade]["type"]
 	if UpgradeDb.UPGRADES[upgrade]["level"] == "Level: 1":
 		var new_item_container = item_container.instantiate()

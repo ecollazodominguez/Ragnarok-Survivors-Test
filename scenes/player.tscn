@@ -184,9 +184,6 @@ colors = PackedColorArray(0.419608, 0.992157, 0, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_8kfgr"]
 gradient = SubResource("Gradient_oi2mw")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqxgy"]
-size = Vector2(11, 12)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ja3i"]
 animations = [{
 "frames": [{
@@ -424,6 +421,9 @@ animations = [{
 "name": &"run top left_right",
 "speed": 10.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqxgy"]
+size = Vector2(18, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fonq"]
 height = 58.0
@@ -790,10 +790,6 @@ nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_yji25")
 texture_progress = SubResource("GradientTexture1D_8kfgr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_qqxgy")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 6.5)
 sprite_frames = SubResource("SpriteFrames_1ja3i")
@@ -807,6 +803,10 @@ sprite_frames = SubResource("SpriteFrames_nbcvv")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("54_yfiex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_qqxgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -850,6 +850,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_gf1kl")
 
 [node name="ExperienceDetectionNode" parent="." instance=ExtResource("56_n428u")]
+visible = false
 
 [node name="CollisionShape2D" parent="ExperienceDetectionNode/CollectArea" index="0"]
 position = Vector2(-0.5, 5.5)

@@ -1,7 +1,6 @@
 extends Control
 
 var world1 = "res://scenes/game.tscn"
-@onready var sound_click = $TextureRect/PanelContainer/VBoxContainer/StartButton/SoundClick
 @onready var character_select = $Background/CharacterSelect
 @onready var menu_buttons = $Background/MenuButtons
 @onready var audio_settings = $Background/AudioSettings

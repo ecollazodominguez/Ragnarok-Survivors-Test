@@ -27,7 +27,7 @@ func _ready():
 	hitbox.damage = enemy_damage
 
 
-func  _physics_process(delta):
+func  _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
 	var direction = global_position.direction_to(player.global_position)
 	spriteDirection()

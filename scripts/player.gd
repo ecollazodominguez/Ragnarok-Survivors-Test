@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var health_bar = $HealthBar
 @onready var game_manager = %GameManager
 @onready var mvp_animation = $MvpAnimation
+@onready var hurtbox = $Hurtbox
 
 
 var movement_speed = 200.0
@@ -60,7 +61,7 @@ func _ready():
 	health_bar.max_value = max_hp
 	health_bar.value = hp
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	movement()
 	
 func attack():
@@ -204,9 +205,9 @@ func spawn_javelin():
 		calc_spawns -= 1
 	#Upgrade Javelin
 	var get_javelins = javelin_container.get_children()
-	for javelin in get_javelins:
-		if javelin.has_method("update_javelin"):
-			javelin.update_javelin()
+	for javelin_weapon in get_javelins:
+		if javelin_weapon.has_method("update_javelin"):
+			javelin_weapon.update_javelin()
 	
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -238,12 +239,12 @@ func _on_enemy_detection_area_body_exited(body):
 
 
 func _on_grab_area_area_entered(area):
-	if area.is_in_group("loot"):
+	if area.is_in_group("loot") && dead == false:
 		area.target = self
 
 
 func _on_collect_area_area_entered(area):
-	if area.is_in_group("loot"):
+	if area.is_in_group("loot") && dead == false:
 		var gem_exp = area.collect()
 		experience_detection_node.calculate_experience(gem_exp)
 		
