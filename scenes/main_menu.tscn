@@ -1,15 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://darjkipmtn7hl"]
+[gd_scene load_steps=13 format=3 uid="uid://darjkipmtn7hl"]
 
 [ext_resource type="Texture2D" uid="uid://bgq5cpsdyschb" path="res://assets/ui/rag_title.png" id="1_85i3q"]
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_dmolc"]
-[ext_resource type="PackedScene" uid="uid://b6xr2syokqdbv" path="res://scenes/basic_button.tscn" id="2_yusnx"]
+[ext_resource type="PackedScene" uid="uid://b6xr2syokqdbv" path="res://scenes/ui/basic_button.tscn" id="2_yusnx"]
 [ext_resource type="Texture2D" uid="uid://bj1cb6qph8dat" path="res://assets/ui/btn_blue.png" id="3_xv2md"]
 [ext_resource type="AudioStream" uid="uid://6xht2lgt7d18" path="res://assets/sounds/click.wav" id="4_f7uws"]
 [ext_resource type="Texture2D" uid="uid://cbkqs7ei4mr8t" path="res://assets/ui/btn_white.png" id="6_wvjki"]
 [ext_resource type="Texture2D" uid="uid://wryrl7q3n327" path="res://assets/ui/win_select.png" id="7_for2k"]
 [ext_resource type="Texture2D" uid="uid://chey6sokvl15f" path="res://assets/sprites/ArcherF/archerF_0001.png" id="8_e8gt6"]
 [ext_resource type="AudioStream" uid="uid://fpec6iwu7hgb" path="res://assets/music/MainMenu.mp3" id="9_d2j5o"]
-[ext_resource type="PackedScene" uid="uid://ccarcjr68xhqe" path="res://scenes/audio_settings.tscn" id="9_jns3v"]
+[ext_resource type="PackedScene" uid="uid://ccarcjr68xhqe" path="res://scenes/ui/audio_settings.tscn" id="9_jns3v"]
+[ext_resource type="Texture2D" uid="uid://o2jwj2rv50ku" path="res://assets/sprites/HeadsF/HeadF36_0001.png" id="9_ois4n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0cgm8"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -109,6 +110,15 @@ offset_left = -18.0
 offset_top = -23.5
 offset_right = 18.0
 offset_bottom = 57.5
+
+[node name="TextureRect2" type="TextureRect" parent="Background/CharacterSelect/CharacterBackground/Character"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 22.0
+offset_right = 89.0
+offset_bottom = 62.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_ois4n")
 
 [node name="ReturnButton" parent="Background/CharacterSelect/CharacterBackground" instance=ExtResource("2_yusnx")]
 layout_mode = 0

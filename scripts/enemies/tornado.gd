@@ -20,25 +20,25 @@ func _ready():
 	match level:
 		1:
 			penetration = 999
-			speed = 500
+			speed = 350
 			damage = 10
 			knockback_amount = 150
 			attack_size = 1.0 * (1 + player.spell_size)
 		2:
 			penetration = 999
-			speed = 500
+			speed = 350
 			damage = 10
 			knockback_amount = 150
 			attack_size = 1.0 * (1 + player.spell_size)
 		3:
 			penetration = 999
-			speed = 500
+			speed = 350
 			damage = 10
 			knockback_amount = 150
 			attack_size = 1.0 * (1 + player.spell_size)
 		4:
 			penetration = 999
-			speed = 500
+			speed = 350
 			damage = 10
 			knockback_amount = 150 * 1.25
 			attack_size = 1.0 * (1 + player.spell_size)

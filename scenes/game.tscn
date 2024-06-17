@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dndvpic7ce0f" path="res://assets/atlas/prt_fild06_atlas.png" id="2_p4vbk"]
 [ext_resource type="PackedScene" uid="uid://d0j7s23vmgp0i" path="res://scenes/enemies/poring.tscn" id="3_8x5as"]
 [ext_resource type="AudioStream" uid="uid://djpeuvap8mqei" path="res://assets/sounds/st_job_level_up.wav" id="3_diww6"]
-[ext_resource type="Script" path="res://scripts/spawn_info.gd" id="3_dx7ga"]
-[ext_resource type="PackedScene" uid="uid://borhgp0lkd2if" path="res://scenes/enemy_spawner.tscn" id="4_1uml2"]
-[ext_resource type="PackedScene" uid="uid://b6xr2syokqdbv" path="res://scenes/basic_button.tscn" id="4_lxfq5"]
+[ext_resource type="Script" path="res://scripts/enemies/spawn_info.gd" id="3_dx7ga"]
+[ext_resource type="PackedScene" uid="uid://borhgp0lkd2if" path="res://scenes/enemies/enemy_spawner.tscn" id="4_1uml2"]
+[ext_resource type="PackedScene" uid="uid://b6xr2syokqdbv" path="res://scenes/ui/basic_button.tscn" id="4_lxfq5"]
 [ext_resource type="Texture2D" uid="uid://cbkqs7ei4mr8t" path="res://assets/ui/btn_white.png" id="5_3gx5w"]
 [ext_resource type="AudioStream" uid="uid://6xht2lgt7d18" path="res://assets/sounds/click.wav" id="6_5k6tp"]
 [ext_resource type="AudioStream" uid="uid://7geq36vlnet" path="res://assets/music/prt_fild06v2.mp3" id="6_vvb8k"]
@@ -32,7 +32,7 @@ colors = PackedColorArray(1, 1, 1, 0.607843)
 gradient = SubResource("Gradient_8w2lw")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3ede"]
-font_size = 29
+font_size = 26
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
@@ -48,55 +48,55 @@ shadow_color = Color(0, 0, 0, 1)
 [sub_resource type="Resource" id="Resource_6w1jf"]
 script = ExtResource("3_dx7ga")
 time_start = 0
-time_end = 120
+time_end = 300
 enemy = ExtResource("3_8x5as")
 enemy_num = 1
-enemy_spawn_delay = 1
+enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_vpky4"]
 script = ExtResource("3_dx7ga")
 time_start = 0
-time_end = 120
+time_end = 600
 enemy = ExtResource("7_67wl8")
 enemy_num = 1
-enemy_spawn_delay = 1
+enemy_spawn_delay = 5
 
 [sub_resource type="Resource" id="Resource_mqxfi"]
 script = ExtResource("3_dx7ga")
-time_start = 0
-time_end = 1
+time_start = 300
+time_end = 300
 enemy = ExtResource("8_trx67")
 enemy_num = 1
 enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_tjj01"]
 script = ExtResource("3_dx7ga")
-time_start = 0
-time_end = 120
+time_start = 300
+time_end = 600
 enemy = ExtResource("9_qg7ad")
 enemy_num = 2
-enemy_spawn_delay = 1
+enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_14gve"]
 script = ExtResource("3_dx7ga")
-time_start = 0
-time_end = 120
+time_start = 150
+time_end = 600
 enemy = ExtResource("10_lqmgo")
-enemy_num = 1
-enemy_spawn_delay = 1
+enemy_num = 2
+enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_3p8eo"]
 script = ExtResource("3_dx7ga")
-time_start = 0
-time_end = 30
+time_start = 60
+time_end = 300
 enemy = ExtResource("11_jc027")
 enemy_num = 1
-enemy_spawn_delay = 1
+enemy_spawn_delay = 0
 
 [sub_resource type="Resource" id="Resource_58x5k"]
 script = ExtResource("3_dx7ga")
-time_start = 0
-time_end = 1
+time_start = 600
+time_end = 600
 enemy = ExtResource("12_5xmki")
 enemy_num = 1
 enemy_spawn_delay = 0
@@ -175,8 +175,8 @@ texture = ExtResource("2_p4vbk")
 98:113/0/physics_layer_0/polygon_0/points = PackedVector2Array(82, 120, -104, 116, -118, 88, -120, -114)
 
 [sub_resource type="TileSet" id="TileSet_hj80k"]
-physics_layer_0/collision_layer = 3
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_rtkpu")
 
 [node name="World1" type="Node2D"]
@@ -201,9 +201,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -51.5
-offset_top = 51.0
+offset_top = 41.0
 offset_right = 51.5
-offset_bottom = 106.0
+offset_bottom = 96.0
 grow_horizontal = 2
 text = "00:00"
 label_settings = SubResource("LabelSettings_6ae2w")
@@ -211,7 +211,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ExpBar" type="TextureProgressBar" parent="GameManager/GUILayer/GUI"]
-custom_minimum_size = Vector2(0, 40)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -227,9 +227,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -267.0
-offset_top = 1.0
-offset_bottom = 41.0
+offset_left = -264.0
+offset_top = -4.0
+offset_right = 3.0
+offset_bottom = 32.0
 grow_horizontal = 0
 text = "Level: 1"
 label_settings = SubResource("LabelSettings_r3ede")

@@ -16,8 +16,8 @@ var angle = Vector2.ZERO
 var default_pos = Vector2.ZERO
 var default_post_distance_diff_player = Vector2.ZERO
 
-var spr_jav_default = preload("res://assets/sprites/Javelin/Javelin_0002.png")
-var spr_jav_atk = preload("res://assets/sprites/Javelin2/Javelin2_0002.png")
+var spr_jav_default = preload("res://assets/sprites/Attacks/Javelin/Javelin_0002.png")
+var spr_jav_atk = preload("res://assets/sprites/Attacks/Javelin2/Javelin2_0002.png")
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var collision_shape_2d = $CollisionShape2D

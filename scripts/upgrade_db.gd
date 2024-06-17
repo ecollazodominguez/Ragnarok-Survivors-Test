@@ -1,7 +1,7 @@
 extends Node
 
 const UPGRADES_PATH = ""
-const WEAPON_PATH = "res://assets/sprites/"
+const WEAPON_PATH = "res://assets/sprites/Attacks/"
 const UPGRADES = {
 	"ice_spear1": {
 		"icon": WEAPON_PATH + "ice_spear.png",

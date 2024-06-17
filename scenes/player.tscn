@@ -40,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cvwuglr8j7qcj" path="res://assets/sprites/ArcherF/archerF_0042.png" id="29_c8a3d"]
 [ext_resource type="Texture2D" uid="uid://d4ibpu36so13d" path="res://assets/sprites/ArcherF/archerF_0043.png" id="30_7psa4"]
 [ext_resource type="Texture2D" uid="uid://cav2m3mbph3xd" path="res://assets/sprites/ArcherF/archerF_0044.png" id="31_isl60"]
-[ext_resource type="Script" path="res://scripts/PivotFramesArcherF.gd" id="32_7huyf"]
+[ext_resource type="Script" path="res://scripts/sprites/PivotFramesArcherF.gd" id="32_7huyf"]
 [ext_resource type="Texture2D" uid="uid://o2jwj2rv50ku" path="res://assets/sprites/HeadsF/HeadF36_0001.png" id="33_1sftd"]
 [ext_resource type="Texture2D" uid="uid://b04viy5ju6xgv" path="res://assets/sprites/HeadsF/HeadF36_0000.png" id="34_0evwu"]
 [ext_resource type="Texture2D" uid="uid://dnygpr78kosma" path="res://assets/sprites/HeadsF/HeadF36_0002.png" id="35_1c0bn"]
@@ -56,8 +56,8 @@
 [ext_resource type="Texture2D" uid="uid://ef71gjny5fw1" path="res://assets/sprites/ArcherF/archerF_0036.png" id="47_l46kw"]
 [ext_resource type="Texture2D" uid="uid://c2ehei3acgr5m" path="res://assets/sprites/HeadsF/HeadF36_0013.png" id="50_f6day"]
 [ext_resource type="Texture2D" uid="uid://dcu1nh8yeaipo" path="res://assets/sprites/HeadsF/HeadF36_0003.png" id="53_mn1bg"]
-[ext_resource type="Script" path="res://scripts/PivotFramesHeadsF.gd" id="54_yfiex"]
-[ext_resource type="PackedScene" uid="uid://c0dxfi1p583c4" path="res://scenes/experience_detection_node.tscn" id="56_n428u"]
+[ext_resource type="Script" path="res://scripts/sprites/PivotFramesHeadsF.gd" id="54_yfiex"]
+[ext_resource type="PackedScene" uid="uid://c0dxfi1p583c4" path="res://scenes/experience/experience_detection_node.tscn" id="56_n428u"]
 [ext_resource type="Texture2D" uid="uid://bw0tw3ci625kd" path="res://assets/sprites/mvp/img_0000.png" id="59_wkh5g"]
 [ext_resource type="Texture2D" uid="uid://b7jpdffi1yyk2" path="res://assets/sprites/mvp/img_0001.png" id="60_m8lif"]
 [ext_resource type="Texture2D" uid="uid://c57eiqgkj21nm" path="res://assets/sprites/mvp/img_0002.png" id="61_7nps5"]
@@ -774,8 +774,8 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(141, -40)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 19
+collision_mask = 19
 motion_mode = 1
 script = ExtResource("1_v268a")
 
@@ -810,6 +810,7 @@ shape = SubResource("RectangleShape2D_qqxgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
+zoom = Vector2(0.8, 0.8)
 limit_smoothed = true
 
 [node name="WalkTimer" type="Timer" parent="."]

@@ -1,24 +1,24 @@
 [gd_scene load_steps=24 format=3 uid="uid://el1oe12iwfea"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_wo3qh"]
-[ext_resource type="Texture2D" uid="uid://dvva00o4x4xa0" path="res://assets/sprites/Poring/Poring_0025.png" id="2_iq2s1"]
-[ext_resource type="Texture2D" uid="uid://bp1vx4330fpoa" path="res://assets/sprites/Poring/Poring_0026.png" id="3_k4hki"]
-[ext_resource type="Texture2D" uid="uid://b2wye5wnc3dmh" path="res://assets/sprites/Poring/Poring_0027.png" id="4_1yy5w"]
-[ext_resource type="Texture2D" uid="uid://c40quuwo0x8wl" path="res://assets/sprites/Poring/Poring_0028.png" id="5_ct6pp"]
-[ext_resource type="Texture2D" uid="uid://d33a6ixc7jbfi" path="res://assets/sprites/Poring/Poring_0000.png" id="6_mg4qv"]
-[ext_resource type="Texture2D" uid="uid://dax012h4bde1m" path="res://assets/sprites/Poring/Poring_0001.png" id="7_sicco"]
-[ext_resource type="Texture2D" uid="uid://dxipxkcsmkd6n" path="res://assets/sprites/Poring/Poring_0002.png" id="8_ggv5u"]
-[ext_resource type="Texture2D" uid="uid://dfqcfsq03k76h" path="res://assets/sprites/Poring/Poring_0003.png" id="9_vvjee"]
-[ext_resource type="Texture2D" uid="uid://nghxfduekpr7" path="res://assets/sprites/Poring/Poring_0008.png" id="10_6bw2x"]
-[ext_resource type="Texture2D" uid="uid://h4jw57ey785c" path="res://assets/sprites/Poring/Poring_0009.png" id="11_vtwt6"]
-[ext_resource type="Texture2D" uid="uid://djxur5kukyjin" path="res://assets/sprites/Poring/Poring_0010.png" id="12_ein5t"]
-[ext_resource type="Texture2D" uid="uid://dl76rprrr1ku3" path="res://assets/sprites/Poring/Poring_0011.png" id="13_8jioy"]
-[ext_resource type="Texture2D" uid="uid://buny8tpl1hjdc" path="res://assets/sprites/Poring/Poring_0012.png" id="14_14wjl"]
-[ext_resource type="Texture2D" uid="uid://dc5mtljgx80xp" path="res://assets/sprites/Poring/Poring_0013.png" id="15_170t0"]
-[ext_resource type="Texture2D" uid="uid://s3iq784akh7e" path="res://assets/sprites/Poring/Poring_0015.png" id="16_f8dr8"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_wo3qh"]
+[ext_resource type="Texture2D" uid="uid://dvva00o4x4xa0" path="res://assets/sprites/Enemies/Poring/Poring_0025.png" id="2_c7y5h"]
+[ext_resource type="Texture2D" uid="uid://bp1vx4330fpoa" path="res://assets/sprites/Enemies/Poring/Poring_0026.png" id="3_18kk5"]
+[ext_resource type="Texture2D" uid="uid://b2wye5wnc3dmh" path="res://assets/sprites/Enemies/Poring/Poring_0027.png" id="4_42gpn"]
+[ext_resource type="Texture2D" uid="uid://c40quuwo0x8wl" path="res://assets/sprites/Enemies/Poring/Poring_0028.png" id="5_erxqm"]
+[ext_resource type="Texture2D" uid="uid://d33a6ixc7jbfi" path="res://assets/sprites/Enemies/Poring/Poring_0000.png" id="6_7up4l"]
+[ext_resource type="Texture2D" uid="uid://dax012h4bde1m" path="res://assets/sprites/Enemies/Poring/Poring_0001.png" id="7_7c083"]
+[ext_resource type="Texture2D" uid="uid://dxipxkcsmkd6n" path="res://assets/sprites/Enemies/Poring/Poring_0002.png" id="8_cwysr"]
+[ext_resource type="Texture2D" uid="uid://dfqcfsq03k76h" path="res://assets/sprites/Enemies/Poring/Poring_0003.png" id="9_xa2sg"]
+[ext_resource type="Texture2D" uid="uid://nghxfduekpr7" path="res://assets/sprites/Enemies/Poring/Poring_0008.png" id="10_en3fm"]
+[ext_resource type="Texture2D" uid="uid://h4jw57ey785c" path="res://assets/sprites/Enemies/Poring/Poring_0009.png" id="11_2il1u"]
+[ext_resource type="Texture2D" uid="uid://djxur5kukyjin" path="res://assets/sprites/Enemies/Poring/Poring_0010.png" id="12_ef6sl"]
+[ext_resource type="Texture2D" uid="uid://dl76rprrr1ku3" path="res://assets/sprites/Enemies/Poring/Poring_0011.png" id="13_e4gaj"]
+[ext_resource type="Texture2D" uid="uid://buny8tpl1hjdc" path="res://assets/sprites/Enemies/Poring/Poring_0012.png" id="14_7rk4r"]
+[ext_resource type="Texture2D" uid="uid://dc5mtljgx80xp" path="res://assets/sprites/Enemies/Poring/Poring_0013.png" id="15_6vfxp"]
+[ext_resource type="Texture2D" uid="uid://s3iq784akh7e" path="res://assets/sprites/Enemies/Poring/Poring_0015.png" id="16_nagxg"]
 [ext_resource type="PackedScene" uid="uid://ooeko6fn5w4p" path="res://scenes/hurtbox.tscn" id="17_fnhus"]
 [ext_resource type="PackedScene" uid="uid://c4lvx1u2gmohq" path="res://scenes/hitbox.tscn" id="18_ha5ql"]
-[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/hit_sound.wav" id="19_1o1fx"]
+[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/attacks/hit_sound.wav" id="19_odwyb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7302t"]
 radius = 15.5
@@ -27,28 +27,28 @@ radius = 15.5
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_iq2s1")
+"texture": ExtResource("2_c7y5h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_k4hki")
+"texture": ExtResource("3_18kk5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1yy5w")
+"texture": ExtResource("4_42gpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ct6pp")
+"texture": ExtResource("5_erxqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ct6pp")
+"texture": ExtResource("5_erxqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ct6pp")
+"texture": ExtResource("5_erxqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ct6pp")
+"texture": ExtResource("5_erxqm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_ct6pp")
+"texture": ExtResource("5_erxqm")
 }],
 "loop": true,
 "name": &"death",
@@ -56,16 +56,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_mg4qv")
+"texture": ExtResource("6_7up4l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_sicco")
+"texture": ExtResource("7_7c083")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ggv5u")
+"texture": ExtResource("8_cwysr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_vvjee")
+"texture": ExtResource("9_xa2sg")
 }],
 "loop": true,
 "name": &"idle",
@@ -73,25 +73,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_6bw2x")
+"texture": ExtResource("10_en3fm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_vtwt6")
+"texture": ExtResource("11_2il1u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_ein5t")
+"texture": ExtResource("12_ef6sl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_8jioy")
+"texture": ExtResource("13_e4gaj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_14wjl")
+"texture": ExtResource("14_7rk4r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_170t0")
+"texture": ExtResource("15_6vfxp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_f8dr8")
+"texture": ExtResource("16_nagxg")
 }],
 "loop": true,
 "name": &"sides",
@@ -108,16 +108,15 @@ radius = 16.0
 z_index = 1
 position = Vector2(64, -6)
 scale = Vector2(2, 2)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 6
 motion_mode = 1
-safe_margin = 10.0
 script = ExtResource("1_wo3qh")
 speed = 90.0
-hp = 30
-knockback_recovery = 6.0
-experience = 10
-enemy_damage = 5
+hp = 350
+knockback_recovery = 25.0
+experience = 25
+enemy_damage = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -12)
@@ -152,7 +151,7 @@ shape = SubResource("CircleShape2D_6jc5l")
 wait_time = 0.7
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_1o1fx")
+stream = ExtResource("19_odwyb")
 pitch_scale = 4.0
 max_polyphony = 10
 bus = &"SFX"

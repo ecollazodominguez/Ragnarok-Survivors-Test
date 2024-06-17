@@ -22,9 +22,9 @@ var additional_attacks = 0
 var dead = false
 
 #Attacks
-var iceSpear = preload("res://scenes/ice_spear.tscn")
-var tornado = preload("res://scenes/tornado.tscn")
-var javelin = preload("res://scenes/javelin.tscn")
+var iceSpear = preload("res://scenes/attacks/ice_spear.tscn")
+var tornado = preload("res://scenes/attacks/tornado.tscn")
+var javelin = preload("res://scenes/attacks/javelin.tscn")
 
 #AttackNodes
 @onready var ice_spear_timer = $Attack/IceSpearTimer

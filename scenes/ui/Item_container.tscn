@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bx5exk8xthkl7"]
 
-[ext_resource type="Script" path="res://scripts/Item_container.gd" id="1_pw2nd"]
-[ext_resource type="Texture2D" uid="uid://c0k86mpc7vt41" path="res://assets/ui/itemwin_mid.png" id="2_ddabo"]
+[ext_resource type="Script" path="res://scripts/ui/Item_container.gd" id="1_ywrea"]
+[ext_resource type="Texture2D" uid="uid://c0k86mpc7vt41" path="res://assets/ui/itemwin_mid.png" id="2_27vuy"]
 
 [node name="ItemContainer" type="ColorRect"]
 self_modulate = Color(1, 1, 1, 0.992157)
@@ -9,7 +9,7 @@ custom_minimum_size = Vector2(40, 40)
 offset_right = 30.0
 offset_bottom = 30.0
 color = Color(0, 0, 0, 0.435294)
-script = ExtResource("1_pw2nd")
+script = ExtResource("1_ywrea")
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 layout_mode = 1
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ddabo")
+texture = ExtResource("2_27vuy")
 
 [node name="ItemTexture" type="TextureRect" parent="BackgroundTexture"]
 custom_minimum_size = Vector2(36, 36)

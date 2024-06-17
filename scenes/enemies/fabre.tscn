@@ -1,19 +1,19 @@
 [gd_scene load_steps=19 format=3 uid="uid://drx12673ovvi0"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_xc06e"]
-[ext_resource type="Texture2D" uid="uid://dio3gv5bnfd5m" path="res://assets/sprites/Fabre/Fabre_0016.png" id="2_jeja6"]
-[ext_resource type="Texture2D" uid="uid://4m4yyxqbeih4" path="res://assets/sprites/Fabre/Fabre_0017.png" id="3_5u54o"]
-[ext_resource type="Texture2D" uid="uid://basi6ycrltugw" path="res://assets/sprites/Fabre/Fabre_0018.png" id="4_l3oms"]
-[ext_resource type="Texture2D" uid="uid://bwsdl7pnka1m4" path="res://assets/sprites/Fabre/Fabre_0000.png" id="5_263rh"]
-[ext_resource type="Texture2D" uid="uid://by7s05xh5vwdv" path="res://assets/sprites/Fabre/Fabre_0001.png" id="6_8enjo"]
-[ext_resource type="Texture2D" uid="uid://d2rcjypu1ws0y" path="res://assets/sprites/Fabre/Fabre_0002.png" id="7_7dpa3"]
-[ext_resource type="Texture2D" uid="uid://c4hk5naspdqk7" path="res://assets/sprites/Fabre/Fabre_0003.png" id="8_askav"]
-[ext_resource type="Texture2D" uid="uid://61h01cy56dyx" path="res://assets/sprites/Fabre/Fabre_0009.png" id="9_1vp3f"]
-[ext_resource type="Texture2D" uid="uid://d0b2vaabpwihp" path="res://assets/sprites/Fabre/Fabre_0010.png" id="10_e572y"]
-[ext_resource type="Texture2D" uid="uid://eothjljw051m" path="res://assets/sprites/Fabre/Fabre_0011.png" id="11_60k4b"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_xc06e"]
+[ext_resource type="Texture2D" uid="uid://dio3gv5bnfd5m" path="res://assets/sprites/Enemies/Fabre/Fabre_0016.png" id="2_hs1nh"]
+[ext_resource type="Texture2D" uid="uid://4m4yyxqbeih4" path="res://assets/sprites/Enemies/Fabre/Fabre_0017.png" id="3_si7bk"]
+[ext_resource type="Texture2D" uid="uid://basi6ycrltugw" path="res://assets/sprites/Enemies/Fabre/Fabre_0018.png" id="4_458uy"]
+[ext_resource type="Texture2D" uid="uid://bwsdl7pnka1m4" path="res://assets/sprites/Enemies/Fabre/Fabre_0000.png" id="5_xyiuo"]
+[ext_resource type="Texture2D" uid="uid://by7s05xh5vwdv" path="res://assets/sprites/Enemies/Fabre/Fabre_0001.png" id="6_0r88a"]
+[ext_resource type="Texture2D" uid="uid://d2rcjypu1ws0y" path="res://assets/sprites/Enemies/Fabre/Fabre_0002.png" id="7_1laby"]
+[ext_resource type="Texture2D" uid="uid://c4hk5naspdqk7" path="res://assets/sprites/Enemies/Fabre/Fabre_0003.png" id="8_5eesw"]
+[ext_resource type="Texture2D" uid="uid://61h01cy56dyx" path="res://assets/sprites/Enemies/Fabre/Fabre_0009.png" id="9_i0pd7"]
+[ext_resource type="Texture2D" uid="uid://d0b2vaabpwihp" path="res://assets/sprites/Enemies/Fabre/Fabre_0010.png" id="10_8w050"]
+[ext_resource type="Texture2D" uid="uid://eothjljw051m" path="res://assets/sprites/Enemies/Fabre/Fabre_0011.png" id="11_dblah"]
+[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/attacks/hit_sound.wav" id="14_wc6bv"]
 [ext_resource type="PackedScene" uid="uid://ooeko6fn5w4p" path="res://scenes/hurtbox.tscn" id="17_glyhj"]
 [ext_resource type="PackedScene" uid="uid://c4lvx1u2gmohq" path="res://scenes/hitbox.tscn" id="18_u50h5"]
-[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/hit_sound.wav" id="19_k0j4w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7302t"]
 radius = 15.0
@@ -22,28 +22,28 @@ radius = 15.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jeja6")
+"texture": ExtResource("2_hs1nh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5u54o")
+"texture": ExtResource("3_si7bk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_l3oms")
+"texture": ExtResource("4_458uy")
 }],
 "loop": true,
 "name": &"death",
@@ -51,16 +51,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_263rh")
+"texture": ExtResource("5_xyiuo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_8enjo")
+"texture": ExtResource("6_0r88a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_7dpa3")
+"texture": ExtResource("7_1laby")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_askav")
+"texture": ExtResource("8_5eesw")
 }],
 "loop": true,
 "name": &"idle",
@@ -68,19 +68,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_1vp3f")
+"texture": ExtResource("9_i0pd7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_e572y")
+"texture": ExtResource("10_8w050")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_e572y")
+"texture": ExtResource("10_8w050")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_e572y")
+"texture": ExtResource("10_8w050")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_60k4b")
+"texture": ExtResource("11_dblah")
 }],
 "loop": true,
 "name": &"sides",
@@ -96,15 +96,15 @@ radius = 15.0
 [node name="Fabre" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(58, -17)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 6
 motion_mode = 1
-safe_margin = 10.0
 script = ExtResource("1_xc06e")
 speed = 65.0
 hp = 7
 knockback_recovery = 5.0
-enemy_damage = 3
+experience = 2
+enemy_damage = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7302t")
@@ -135,7 +135,7 @@ shape = SubResource("CircleShape2D_6jc5l")
 wait_time = 0.7
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_k0j4w")
+stream = ExtResource("14_wc6bv")
 pitch_scale = 4.0
 max_polyphony = 10
 bus = &"SFX"

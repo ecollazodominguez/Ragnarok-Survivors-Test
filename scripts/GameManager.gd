@@ -12,7 +12,7 @@ extends Node
 @onready var lbl_level_up = $GUILayer/GUI/LevelUp/MarginContainer/GridContainer/lbl_levelUp
 @onready var upgrade_options = $GUILayer/GUI/LevelUp/MarginContainer/GridContainer/UpgradeOptions
 @onready var sound_effect = $GUILayer/GUI/LevelUp/SoundEffect
-@onready var itemOptions = preload("res://scenes/item_option.tscn")
+@onready var itemOptions = preload("res://scenes/ui/item_option.tscn")
 
 #TIMER
 @onready var lbl_timer = $GUILayer/GUI/lbl_timer
@@ -21,7 +21,7 @@ var pass_time = 0
 #COLLECTED ITEMS
 @onready var collected_weapons = $GUILayer/GUI/CollectedItems/VBoxContainer/CollectedWeapons
 @onready var collected_upgrades = $GUILayer/GUI/CollectedItems/VBoxContainer/CollectedUpgrades
-@onready var item_container = preload("res://scenes/Item_container.tscn")
+@onready var item_container = preload("res://scenes/ui/Item_container.tscn")
 
 
 #Player
@@ -65,7 +65,7 @@ func adjust_gui_collection(upgrade):
 				collected_upgrades.add_child(new_item_container)
 
 func change_time():
-	if pass_time >= 0 && bossDead:
+	if pass_time >= 600 && bossDead:
 		end_stage()
 	var time = int(pass_time)
 	var minutes = int(time/60.0)
@@ -188,6 +188,7 @@ func apply_upgrade_levels(upgrade):
 		"food":
 			player.hp += 20
 			player.hp = clamp(player.hp,0,player.max_hp)
+			player.health_bar.value = player.hp
 
 func get_random_item():
 	var dblist = []

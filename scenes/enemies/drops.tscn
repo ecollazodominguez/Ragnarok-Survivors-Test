@@ -1,25 +1,25 @@
 [gd_scene load_steps=25 format=3 uid="uid://ca270r6hyjodg"]
 
-[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_8j0y4"]
-[ext_resource type="Texture2D" uid="uid://d4fts1xgoe5dp" path="res://assets/sprites/Drops/Drops_0025.png" id="2_o34q0"]
-[ext_resource type="Texture2D" uid="uid://bobsge6wsqhpf" path="res://assets/sprites/Drops/Drops_0026.png" id="3_wdk3s"]
-[ext_resource type="Texture2D" uid="uid://c0m14hcht231k" path="res://assets/sprites/Drops/Drops_0027.png" id="4_0nb7y"]
-[ext_resource type="Texture2D" uid="uid://c0pwn3bif7djn" path="res://assets/sprites/Drops/Drops_0028.png" id="5_btm36"]
-[ext_resource type="Texture2D" uid="uid://bsg4c5e6raod6" path="res://assets/sprites/Drops/Drops_0000.png" id="6_s6drq"]
-[ext_resource type="Texture2D" uid="uid://cy3axfm2v7ri6" path="res://assets/sprites/Drops/Drops_0001.png" id="7_lgtq4"]
-[ext_resource type="Texture2D" uid="uid://bhtkeehulv4bi" path="res://assets/sprites/Drops/Drops_0002.png" id="8_xq12q"]
-[ext_resource type="Texture2D" uid="uid://dl4swhntrtswe" path="res://assets/sprites/Drops/Drops_0003.png" id="9_742e5"]
-[ext_resource type="Texture2D" uid="uid://bimhugivp272w" path="res://assets/sprites/Drops/Drops_0008.png" id="10_x4gty"]
-[ext_resource type="Texture2D" uid="uid://ckxsil1g2f7oh" path="res://assets/sprites/Drops/Drops_0009.png" id="11_d0wy5"]
-[ext_resource type="Texture2D" uid="uid://deifyphdyjeu8" path="res://assets/sprites/Drops/Drops_0010.png" id="12_7tyfq"]
-[ext_resource type="Texture2D" uid="uid://cm8r4mjonhv2k" path="res://assets/sprites/Drops/Drops_0011.png" id="13_7p4r0"]
-[ext_resource type="Texture2D" uid="uid://d4du35a3854sd" path="res://assets/sprites/Drops/Drops_0012.png" id="14_p1mpv"]
-[ext_resource type="Texture2D" uid="uid://68p5lha6c0ff" path="res://assets/sprites/Drops/Drops_0013.png" id="15_bqgos"]
-[ext_resource type="Texture2D" uid="uid://bnd4c1nm01aoh" path="res://assets/sprites/Drops/Drops_0014.png" id="16_xhc4g"]
-[ext_resource type="Texture2D" uid="uid://kslqunvcbhma" path="res://assets/sprites/Drops/Drops_0015.png" id="17_00ikf"]
+[ext_resource type="Script" path="res://scripts/enemies/enemy.gd" id="1_8j0y4"]
+[ext_resource type="Texture2D" uid="uid://d4fts1xgoe5dp" path="res://assets/sprites/Enemies/Drops/Drops_0025.png" id="2_pdeth"]
+[ext_resource type="Texture2D" uid="uid://bobsge6wsqhpf" path="res://assets/sprites/Enemies/Drops/Drops_0026.png" id="3_tvrex"]
+[ext_resource type="Texture2D" uid="uid://c0m14hcht231k" path="res://assets/sprites/Enemies/Drops/Drops_0027.png" id="4_glwfa"]
+[ext_resource type="Texture2D" uid="uid://c0pwn3bif7djn" path="res://assets/sprites/Enemies/Drops/Drops_0028.png" id="5_f8b6a"]
+[ext_resource type="Texture2D" uid="uid://bsg4c5e6raod6" path="res://assets/sprites/Enemies/Drops/Drops_0000.png" id="6_h2lcr"]
+[ext_resource type="Texture2D" uid="uid://cy3axfm2v7ri6" path="res://assets/sprites/Enemies/Drops/Drops_0001.png" id="7_8vh11"]
+[ext_resource type="Texture2D" uid="uid://bhtkeehulv4bi" path="res://assets/sprites/Enemies/Drops/Drops_0002.png" id="8_4gg8h"]
+[ext_resource type="Texture2D" uid="uid://dl4swhntrtswe" path="res://assets/sprites/Enemies/Drops/Drops_0003.png" id="9_amjm8"]
+[ext_resource type="Texture2D" uid="uid://bimhugivp272w" path="res://assets/sprites/Enemies/Drops/Drops_0008.png" id="10_i3bts"]
+[ext_resource type="Texture2D" uid="uid://ckxsil1g2f7oh" path="res://assets/sprites/Enemies/Drops/Drops_0009.png" id="11_g2mtm"]
+[ext_resource type="Texture2D" uid="uid://deifyphdyjeu8" path="res://assets/sprites/Enemies/Drops/Drops_0010.png" id="12_qmgyo"]
+[ext_resource type="Texture2D" uid="uid://cm8r4mjonhv2k" path="res://assets/sprites/Enemies/Drops/Drops_0011.png" id="13_lh28v"]
+[ext_resource type="Texture2D" uid="uid://d4du35a3854sd" path="res://assets/sprites/Enemies/Drops/Drops_0012.png" id="14_x1s88"]
+[ext_resource type="Texture2D" uid="uid://68p5lha6c0ff" path="res://assets/sprites/Enemies/Drops/Drops_0013.png" id="15_crio8"]
+[ext_resource type="Texture2D" uid="uid://bnd4c1nm01aoh" path="res://assets/sprites/Enemies/Drops/Drops_0014.png" id="16_k8rv8"]
+[ext_resource type="Texture2D" uid="uid://kslqunvcbhma" path="res://assets/sprites/Enemies/Drops/Drops_0015.png" id="17_6guj3"]
 [ext_resource type="PackedScene" uid="uid://ooeko6fn5w4p" path="res://scenes/hurtbox.tscn" id="17_s46kv"]
 [ext_resource type="PackedScene" uid="uid://c4lvx1u2gmohq" path="res://scenes/hitbox.tscn" id="18_w52xu"]
-[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/hit_sound.wav" id="19_q48oo"]
+[ext_resource type="AudioStream" uid="uid://curyaor68bm23" path="res://assets/sounds/attacks/hit_sound.wav" id="20_fh2tj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7302t"]
 radius = 15.0
@@ -28,28 +28,28 @@ radius = 15.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_o34q0")
+"texture": ExtResource("2_pdeth")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_wdk3s")
+"texture": ExtResource("3_tvrex")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_0nb7y")
+"texture": ExtResource("4_glwfa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btm36")
+"texture": ExtResource("5_f8b6a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btm36")
+"texture": ExtResource("5_f8b6a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btm36")
+"texture": ExtResource("5_f8b6a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btm36")
+"texture": ExtResource("5_f8b6a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btm36")
+"texture": ExtResource("5_f8b6a")
 }],
 "loop": true,
 "name": &"death",
@@ -57,16 +57,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_s6drq")
+"texture": ExtResource("6_h2lcr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_lgtq4")
+"texture": ExtResource("7_8vh11")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_xq12q")
+"texture": ExtResource("8_4gg8h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_742e5")
+"texture": ExtResource("9_amjm8")
 }],
 "loop": true,
 "name": &"idle",
@@ -74,28 +74,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_x4gty")
+"texture": ExtResource("10_i3bts")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_d0wy5")
+"texture": ExtResource("11_g2mtm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_7tyfq")
+"texture": ExtResource("12_qmgyo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_7p4r0")
+"texture": ExtResource("13_lh28v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_p1mpv")
+"texture": ExtResource("14_x1s88")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_bqgos")
+"texture": ExtResource("15_crio8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_xhc4g")
+"texture": ExtResource("16_k8rv8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_00ikf")
+"texture": ExtResource("17_6guj3")
 }],
 "loop": true,
 "name": &"sides",
@@ -111,13 +111,14 @@ radius = 15.0
 [node name="Drops" type="CharacterBody2D"]
 z_index = 1
 position = Vector2(58, -17)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 4
+collision_mask = 6
 motion_mode = 1
-safe_margin = 10.0
 script = ExtResource("1_8j0y4")
 hp = 5
 knockback_recovery = 6.0
+experience = 2
+enemy_damage = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7302t")
@@ -148,7 +149,7 @@ shape = SubResource("CircleShape2D_6jc5l")
 wait_time = 0.7
 
 [node name="hit_sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("19_q48oo")
+stream = ExtResource("20_fh2tj")
 pitch_scale = 4.0
 max_polyphony = 10
 bus = &"SFX"

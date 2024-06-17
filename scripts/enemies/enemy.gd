@@ -19,7 +19,7 @@ var knockback = Vector2.ZERO
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var hitbox = $Hitbox
 
-var exp_gem_scene = preload("res://scenes/experience_gem.tscn")
+var exp_gem_scene = preload("res://scenes/experience/experience_gem.tscn")
 
 signal remove_from_array(object)
 

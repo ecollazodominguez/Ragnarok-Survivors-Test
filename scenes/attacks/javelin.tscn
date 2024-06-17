@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5owiwm7sf0it"]
 
-[ext_resource type="Texture2D" uid="uid://c82svxin2a6u0" path="res://assets/sprites/Javelin/Javelin_0002.png" id="1_a0xvd"]
-[ext_resource type="Script" path="res://scripts/javelin.gd" id="1_j6qpq"]
-[ext_resource type="AudioStream" uid="uid://bybvgwb3v3lhb" path="res://assets/sounds/lg_cannonspear.wav" id="2_5lubm"]
+[ext_resource type="Texture2D" uid="uid://c82svxin2a6u0" path="res://assets/sprites/Attacks/Javelin/Javelin_0002.png" id="1_a0xvd"]
+[ext_resource type="Script" path="res://scripts/enemies/javelin.gd" id="1_j6qpq"]
+[ext_resource type="AudioStream" uid="uid://bybvgwb3v3lhb" path="res://assets/sounds/attacks/lg_cannonspear.wav" id="2_5lubm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ctpw"]
 size = Vector2(103.238, 11.3137)
